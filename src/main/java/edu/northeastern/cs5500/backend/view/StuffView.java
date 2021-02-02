@@ -68,8 +68,7 @@ public class StuffView implements View {
                     Stuff.setId(null);
                     Stuff = StuffController.addStuff(Stuff);
 
-                    response.redirect(
-                            String.format("/stuff/{}", Stuff.getId().toHexString()), 301);
+                    response.redirect(String.format("/stuff/{}", Stuff.getId().toHexString()), 301);
                     return Stuff;
                 });
 

@@ -1,12 +1,10 @@
 name: Spotless
 
 on:
-  push:
-    branches: [ main ]
   pull_request:
 
 jobs:
-  build:
+  spotlessCheck:
 
     runs-on: ubuntu-latest
 

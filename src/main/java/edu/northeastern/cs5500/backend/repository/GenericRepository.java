@@ -1,7 +1,7 @@
 package edu.northeastern.cs5500.backend.repository;
 
 import java.util.Collection;
-import javax.annotation.Nonnull ;
+import javax.annotation.Nonnull;
 import org.bson.types.ObjectId;
 
 public interface GenericRepository<T> {

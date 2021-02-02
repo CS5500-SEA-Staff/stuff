@@ -13,15 +13,13 @@ import org.junit.jupiter.api.Test;
 class StuffControllerTest {
     @Test
     void testRegisterCreatesStuff() {
-        StuffController StuffController =
-                new StuffController(new InMemoryRepository<Stuff>());
+        StuffController StuffController = new StuffController(new InMemoryRepository<Stuff>());
         assertThat(StuffController.getStuff()).isNotEmpty();
     }
 
     @Test
     void testRegisterCreatesValidStuff() {
-        StuffController StuffController =
-                new StuffController(new InMemoryRepository<Stuff>());
+        StuffController StuffController = new StuffController(new InMemoryRepository<Stuff>());
 
         for (Stuff Stuff : StuffController.getStuff()) {
             assertWithMessage(Stuff.getTitle()).that(Stuff.isValid()).isTrue();
