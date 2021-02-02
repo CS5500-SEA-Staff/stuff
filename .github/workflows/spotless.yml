@@ -1,12 +1,12 @@
-name: Spotless
+name: spotless
 
 on:
   pull_request:
 
 jobs:
-  spotlessCheck:
+  check:
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     steps:
     - uses: actions/checkout@v2
