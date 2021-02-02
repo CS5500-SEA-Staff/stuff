@@ -1,6 +1,6 @@
 plugins {
-    // Build "fat" jars for deployment
-    id 'com.github.johnrengelman.shadow' version '5.2.0'
+    // Build "shadow" JARs for Heroku
+    id 'com.github.johnrengelman.shadow' version '6.1.0'
 
     // Apply the java plugin to add support for Java
     id 'java'
@@ -8,14 +8,14 @@ plugins {
     // Apply the application plugin to add support for building a CLI application.
     id 'application'
 
-    // Deploy directly to heroku without using Git
-    id "com.heroku.sdk.heroku-gradle" version "1.0.4"
-
     // Lombok provides shorthand for repetitive Java tasks
-    id "io.freefair.lombok" version "4.1.6"
+    id "io.freefair.lombok" version "5.3.0"
 
     // Spotless to format code easily
-    id "com.diffplug.gradle.spotless" version "3.27.1"
+    id "com.diffplug.spotless" version "5.9.0"
+
+    // Check for updates to dependencies
+    id "com.github.ben-manes.versions" version "0.36.0"
 }
 
 repositories {
@@ -26,40 +26,40 @@ repositories {
 
 dependencies {
     // Simple HTTP framework - http://sparkjava.com/
-    implementation 'com.sparkjava:spark-core:2.9.1'
+    implementation 'com.sparkjava:spark-core:2.9.3'
 
     // Basic logging support; used by Spark
-    implementation "org.slf4j:slf4j-simple:1.7.25"
+    implementation "org.slf4j:slf4j-simple:2.0.0-alpha1"
 
     // Jackson to serialize/deserialize JSON
-    implementation 'com.fasterxml.jackson.core:jackson-databind:2.10.2'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.12.1'
 
     // Use JUnit Jupiter API for testing.
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.5.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
 
     // Use JUnit Jupiter Engine for testing.
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.5.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
 
     // Use dagger for dependency injection
-    implementation 'com.google.dagger:dagger:2.26'
-    annotationProcessor 'com.google.dagger:dagger-compiler:2.26'
+    implementation 'com.google.dagger:dagger:2.31.2'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.31.2'
 
     // Annotations such as Nullable
     implementation 'com.google.code.findbugs:annotations:3.0.1'
 
     // Force JRE Guava to work around issues with Truth
-    testImplementation "com.google.guava:guava:28.2-jre"
+    testImplementation "com.google.guava:guava:30.1-jre"
 
     // Fluent assertions for testing
-    testImplementation 'com.google.truth:truth:1.0.1'
+    testImplementation 'com.google.truth:truth:1.1.2'
 
     // MongoDB client
-    implementation 'org.mongodb:mongodb-driver:3.12.1'
+    implementation 'org.mongodb:mongodb-driver:3.12.7'
 }
 
 application {
     // Define the main class for the application.
-    mainClassName = 'edu.northeastern.cs5500.delivery.App'
+    mainClassName = 'edu.northeastern.cs5500.backend.App'
 }
 
 test {
@@ -67,16 +67,7 @@ test {
     useJUnitPlatform()
 }
 
-// Heroku will run the 'stage' task on deployment via git
 task stage(dependsOn: ['clean', 'shadowJar'])
-shadowJar.mustRunAfter clean
-
-// Force all builds to be clean builds due to Dagger problems
-build.mustRunAfter clean
-build.dependsOn += 'clean'
-
-run.mustRunAfter clean
-run.dependsOn += 'clean'
 
 // Target Java 1.11 - make sure system.properties matches this as well
 sourceCompatibility = 1.11

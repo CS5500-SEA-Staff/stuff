@@ -1,4 +1,4 @@
-package edu.northeastern.cs5500.delivery.model;
+package edu.northeastern.cs5500.backend.model;
 
 import org.bson.types.ObjectId;
 

@@ -1,4 +1,4 @@
-package edu.northeastern.cs5500.delivery.service;
+package edu.northeastern.cs5500.backend.service;
 
 public interface Service {
 

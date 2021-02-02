@@ -1,4 +1,4 @@
-package edu.northeastern.cs5500.delivery.view;
+package edu.northeastern.cs5500.backend.view;
 
 import dagger.Module;
 import dagger.Provides;
@@ -8,8 +8,8 @@ import dagger.multibindings.IntoSet;
 public class ViewModule {
     @Provides
     @IntoSet
-    public View provideDeliveryView(DeliveryView deliveryView) {
-        return deliveryView;
+    public View provideStuffView(StuffView StuffView) {
+        return StuffView;
     }
 
     @Provides

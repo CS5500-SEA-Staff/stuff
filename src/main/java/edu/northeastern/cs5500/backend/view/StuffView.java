@@ -1,4 +1,4 @@
-package edu.northeastern.cs5500.delivery.view;
+package edu.northeastern.cs5500.backend.view;
 
 import static spark.Spark.delete;
 import static spark.Spark.get;
@@ -7,9 +7,9 @@ import static spark.Spark.post;
 import static spark.Spark.put;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import edu.northeastern.cs5500.delivery.JsonTransformer;
-import edu.northeastern.cs5500.delivery.controller.DeliveryController;
-import edu.northeastern.cs5500.delivery.model.Delivery;
+import edu.northeastern.cs5500.backend.JsonTransformer;
+import edu.northeastern.cs5500.backend.controller.StuffController;
+import edu.northeastern.cs5500.backend.model.Stuff;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import lombok.extern.slf4j.Slf4j;
@@ -17,84 +17,84 @@ import org.bson.types.ObjectId;
 
 @Singleton
 @Slf4j
-public class DeliveryView implements View {
+public class StuffView implements View {
 
     @Inject
-    DeliveryView() {}
+    StuffView() {}
 
     @Inject JsonTransformer jsonTransformer;
 
-    @Inject DeliveryController deliveryController;
+    @Inject StuffController StuffController;
 
     @Override
     public void register() {
-        log.info("DeliveryView > register");
+        log.info("StuffView > register");
 
         get(
-                "/delivery",
+                "/stuff",
                 (request, response) -> {
-                    log.debug("/delivery");
+                    log.debug("/stuff");
                     response.type("application/json");
-                    return deliveryController.getDeliverys();
+                    return StuffController.getStuff();
                 },
                 jsonTransformer);
 
         get(
-                "/delivery/:id",
+                "/stuff/:id",
                 (request, response) -> {
                     final String paramId = request.params(":id");
-                    log.debug("/delivery/:id<{}>", paramId);
+                    log.debug("/stuff/:id<{}>", paramId);
                     final ObjectId id = new ObjectId(paramId);
-                    Delivery delivery = deliveryController.getDelivery(id);
-                    if (delivery == null) {
+                    Stuff Stuff = StuffController.getStuff(id);
+                    if (Stuff == null) {
                         halt(404);
                     }
                     response.type("application/json");
-                    return delivery;
+                    return Stuff;
                 },
                 jsonTransformer);
 
         post(
-                "/delivery",
+                "/stuff",
                 (request, response) -> {
                     ObjectMapper mapper = new ObjectMapper();
-                    Delivery delivery = mapper.readValue(request.body(), Delivery.class);
-                    if (!delivery.isValid()) {
+                    Stuff Stuff = mapper.readValue(request.body(), Stuff.class);
+                    if (!Stuff.isValid()) {
                         response.status(400);
                         return "";
                     }
 
                     // Ignore the user-provided ID if there is one
-                    delivery.setId(null);
-                    delivery = deliveryController.addDelivery(delivery);
+                    Stuff.setId(null);
+                    Stuff = StuffController.addStuff(Stuff);
 
                     response.redirect(
-                            String.format("/delivery/{}", delivery.getId().toHexString()), 301);
-                    return delivery;
+                            String.format("/stuff/{}", Stuff.getId().toHexString()), 301);
+                    return Stuff;
                 });
 
         put(
-                "/delivery",
+                "/stuff",
                 (request, response) -> {
                     ObjectMapper mapper = new ObjectMapper();
-                    Delivery delivery = mapper.readValue(request.body(), Delivery.class);
-                    if (!delivery.isValid()) {
+                    Stuff Stuff = mapper.readValue(request.body(), Stuff.class);
+                    if (!Stuff.isValid()) {
                         response.status(400);
                         return "";
                     }
 
-                    deliveryController.updateDelivery(delivery);
-                    return delivery;
+                    StuffController.updateStuff(Stuff);
+                    return Stuff;
                 });
 
         delete(
-                "/delivery",
+                "/stuff",
                 (request, response) -> {
                     ObjectMapper mapper = new ObjectMapper();
-                    Delivery delivery = mapper.readValue(request.body(), Delivery.class);
+                    Stuff Stuff = mapper.readValue(request.body(), Stuff.class);
 
-                    deliveryController.deleteDelivery(delivery.getId());
-                    return delivery;
+                    StuffController.deleteStuff(Stuff.getId());
+                    return Stuff;
                 });
     }
 }

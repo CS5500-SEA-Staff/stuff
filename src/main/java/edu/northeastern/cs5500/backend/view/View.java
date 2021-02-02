@@ -1,4 +1,4 @@
-package edu.northeastern.cs5500.delivery.view;
+package edu.northeastern.cs5500.backend.view;
 
 public interface View {
 

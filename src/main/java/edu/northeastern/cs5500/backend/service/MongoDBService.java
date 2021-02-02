@@ -1,4 +1,4 @@
-package edu.northeastern.cs5500.delivery.service;
+package edu.northeastern.cs5500.backend.service;
 
 import static org.bson.codecs.configuration.CodecRegistries.fromProviders;
 import static org.bson.codecs.configuration.CodecRegistries.fromRegistries;
@@ -25,7 +25,7 @@ public class MongoDBService implements Service {
         if (databaseURI != null) {
             return databaseURI;
         }
-        return "mongodb://localhost:27017/delivery"; // connect to localhost by default
+        return "mongodb://localhost:27017/Stuff"; // connect to localhost by default
     }
 
     @Getter private MongoDatabase mongoDatabase;

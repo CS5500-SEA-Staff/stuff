@@ -1,11 +1,11 @@
-package edu.northeastern.cs5500.delivery.repository;
+package edu.northeastern.cs5500.backend.repository;
 
 import static com.mongodb.client.model.Filters.eq;
 
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
-import edu.northeastern.cs5500.delivery.model.Model;
-import edu.northeastern.cs5500.delivery.service.MongoDBService;
+import edu.northeastern.cs5500.backend.model.Model;
+import edu.northeastern.cs5500.backend.service.MongoDBService;
 import java.util.ArrayList;
 import java.util.Collection;
 import javax.annotation.Nullable;

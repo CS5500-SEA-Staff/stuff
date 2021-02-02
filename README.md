@@ -1,10 +1,15 @@
-# Delivery
+# Backend
 
-This is the basic Delivery project that all students forked in CS5500 F20.
+This is a basic API backend built with Spark and Dagger.
+
+## Nothing works / I see tons of errors
+
+This project relies on Dagger; until you do a `./gradlew build` Dagger-generated
+classes won't exist and many errors/problems will appear.
 
 ## Requirements
 
-A recent Gradle (>= 6.1.1 but < 7.0.0) and JDK 8.
+A recent Gradle (>= 6.1.1 but < 7.0.0) and JDK 11.
 
 ## Building
 
@@ -22,12 +27,18 @@ The server will start on port 5000 by default.
 
 ## Deploying to Heroku
 
-Configure as normal and use `git push heroku main`.
+To simulate a Heroku deployment locally, run these commands:
 
-`./gradlew build deployHeroku` works to deploy without pushes...sometimes.
+```
+./gradlew stage
+heroku local web
+```
+
+This performs a clean build and is therefore slower than `./gradlew run` but can
+help debug issues where the backend works locally but fails on Heroku.
 
 ## Spotless?
 
 Spotless automatically formats code. If it detects errors, run `./gradlew spotlessApply`
-to automatically fix them. `./gradlew spotlessCheck` can be used to directly invoke
-Spotless.
+to automatically fix them. `./gradlew spotlessCheck` will run Spotless without applying
+fixes.
