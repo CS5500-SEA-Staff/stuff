@@ -9,6 +9,8 @@ public class User implements Model {
     private ObjectId id;
     private String username;
     private String displayName;
+    private String userLanguage;
+    private breakbuild;
 
     /** @return true if this User is valid */
     @JsonIgnore
