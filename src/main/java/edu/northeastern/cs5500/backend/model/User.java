@@ -8,7 +8,7 @@ import org.bson.types.ObjectId;
 public class User implements Model {
     private ObjectId id;
     private String username;
-    private String emailAddress;
+    private String displayName;
 
     /** @return true if this Stuff is valid */
     @JsonIgnore
