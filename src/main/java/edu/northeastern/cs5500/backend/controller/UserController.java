@@ -17,14 +17,14 @@ public class UserController {
 
     // @Inject
     // private StuffController stuffController;
-    //inject happens after constructor, so if need that during construction.
-    //have to manually create one
-    //***Q: after constrction, will I automatically get the stuffController field,
-    //if, I have a Module providing stuffController???
+    // inject happens after constructor, so if need that during construction.
+    // have to manually create one
+    // ***Q: after constrction, will I automatically get the stuffController field,
+    // if, I have a Module providing stuffController???
 
     @Inject
     UserController(GenericRepository<User> userRepository) {
-        //do not need to pass in a userRepo, dagger will provide that for us
+        // do not need to pass in a userRepo, dagger will provide that for us
         this.userRepository = userRepository;
 
         log.info("UserController > construct");

@@ -32,7 +32,7 @@ public class MongoDBService implements Service {
     // auto generate getter for this feature
 
     @Inject
-    //when constructing, will inject resources needed(provided by IoC/dagger)
+    // when constructing, will inject resources needed(provided by IoC/dagger)
     public MongoDBService() {
         CodecRegistry codecRegistry =
                 fromRegistries(

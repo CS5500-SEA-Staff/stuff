@@ -36,10 +36,5 @@ for class B:
 ***Q:so, mark @injection when some class/ method needs a dependency?
 */
 
-
-
-
-
-
-//调用Component（注入器）的injectXXX（Object）方法开始注入（injectXXX方法名字是官方推荐的名字,以inject开始）
-//Component就像媒介,连接 Module和目标类，把目标类依赖的实例注入到目标类中，来初始化目标类中的依赖。
+// 调用Component（注入器）的injectXXX（Object）方法开始注入（injectXXX方法名字是官方推荐的名字,以inject开始）
+// Component就像媒介,连接 Module和目标类，把目标类依赖的实例注入到目标类中，来初始化目标类中的依赖。

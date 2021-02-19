@@ -17,8 +17,8 @@ public class StuffController {
     private final GenericRepository<Stuff> stuffRepository;
 
     @Inject
-    //dependency;when the stuffcontroller is built, make sure a valid stuffRepo is passed in
-    //here, read codes in Repo>RepositoryModule 
+    // dependency;when the stuffcontroller is built, make sure a valid stuffRepo is passed in
+    // here, read codes in Repo>RepositoryModule
     StuffController(GenericRepository<Stuff> stuffRepository) {
         this.stuffRepository = stuffRepository;
 
@@ -27,7 +27,7 @@ public class StuffController {
         if (stuffRepository.count() > 0) {
             return;
         }
-        //if there is nothing in the database, then create some default element
+        // if there is nothing in the database, then create some default element
 
         log.info("StuffController > construct > adding default stuff");
 

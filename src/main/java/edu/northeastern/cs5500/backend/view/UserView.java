@@ -81,7 +81,7 @@ public class UserView implements View {
         post(
                 "/user",
                 (request, response) -> {
-                    //check the request
+                    // check the request
                     User user = getUserFromRequest(request);
                     if (user == null) {
                         response.status(400);

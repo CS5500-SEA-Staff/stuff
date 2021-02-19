@@ -5,7 +5,7 @@ import dagger.Provides;
 import edu.northeastern.cs5500.backend.model.Stuff;
 import edu.northeastern.cs5500.backend.model.User;
 
-//here, read codes in controller > StuffController 
+// here, read codes in controller > StuffController
 @Module
 public class RepositoryModule {
     @Provides
