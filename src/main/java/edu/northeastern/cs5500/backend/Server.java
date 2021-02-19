@@ -13,6 +13,7 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 @Component(
+        // states the modules we are using
         modules = {
             ViewModule.class,
             ModelModule.class,
@@ -21,6 +22,7 @@ import javax.inject.Singleton;
 @Singleton
 interface ServerComponent {
     public Server server();
+    // how we get a server for modules
 }
 
 public class Server {

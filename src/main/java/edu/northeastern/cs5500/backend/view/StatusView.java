@@ -20,6 +20,10 @@ public class StatusView implements View {
         get(
                 "/status",
                 (request, response) -> {
+                    /*
+                    request：what user gives; respond:what i am sending back
+                    respond:header*/
+                    // response:header,type,status
                     log.debug("/status");
                     response.type("application/json");
                     return "{\"status\":\"OK\"}";

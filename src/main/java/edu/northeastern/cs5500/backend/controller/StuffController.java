@@ -11,11 +11,14 @@ import lombok.extern.slf4j.Slf4j;
 import org.bson.types.ObjectId;
 
 @Singleton
+// whenever a stuffcontroller is requested, it should always be this one
 @Slf4j
 public class StuffController {
     private final GenericRepository<Stuff> stuffRepository;
 
     @Inject
+    // dependency;when the stuffcontroller is built, make sure a valid stuffRepo is passed in
+    // here, read codes in Repo>RepositoryModule
     StuffController(GenericRepository<Stuff> stuffRepository) {
         this.stuffRepository = stuffRepository;
 
@@ -24,6 +27,7 @@ public class StuffController {
         if (stuffRepository.count() > 0) {
             return;
         }
+        // if there is nothing in the database, then create some default element
 
         log.info("StuffController > construct > adding default stuff");
 
@@ -84,3 +88,9 @@ public class StuffController {
         stuffRepository.delete(id);
     }
 }
+
+/*
+each model has a controller to provide basic operations;
+controller can depend on other controllers; do not have to be bound to just one model;
+2 controllers can not reference each other-> use another controller to refer to both 2 controller
+*/
