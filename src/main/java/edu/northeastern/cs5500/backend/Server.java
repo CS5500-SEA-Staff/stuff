@@ -13,14 +13,17 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 @Component(
+    //states the modules we are using
         modules = {
             ViewModule.class,
             ModelModule.class,
             RepositoryModule.class,
         })
+
 @Singleton
 interface ServerComponent {
     public Server server();
+    //how we get a server for modules
 }
 
 public class Server {

@@ -11,6 +11,7 @@ import edu.northeastern.cs5500.backend.repository.InMemoryRepository;
 import org.junit.jupiter.api.Test;
 
 class StuffControllerTest {
+    //we are not using Dagger, we are manually create objs.
     @Test
     void testRegisterCreatesStuff() {
         StuffController StuffController = new StuffController(new InMemoryRepository<Stuff>());

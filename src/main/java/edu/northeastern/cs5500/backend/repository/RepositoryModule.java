@@ -5,6 +5,7 @@ import dagger.Provides;
 import edu.northeastern.cs5500.backend.model.Stuff;
 import edu.northeastern.cs5500.backend.model.User;
 
+//here, read codes in controller > StuffController 
 @Module
 public class RepositoryModule {
     @Provides
@@ -19,7 +20,7 @@ public class RepositoryModule {
 }
 
 /*
-// Here's an example of how you imght swap out the in-memory repository for a database-backed
+// Here's an example of how you might swap out the in-memory repository for a database-backed
 // repository:
 
 package edu.northeastern.cs5500.backend.repository;
